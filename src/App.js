@@ -12,6 +12,7 @@ export default function App() {
     //setTodos((prev) => [...prev, { task, id }]);
     setTodos((prev) => prev.concat({ task, id, done }));
     setVal(" ");
+    e.target.elements.enterTodo.value = "";
   }, []);
 
   const deleteTodo = useCallback((todo) => {
