@@ -3,6 +3,7 @@ import "./styles.css";
 
 export default function App() {
   const [todos, setTodos] = useState([]);
+  const [val, setVal] = useState("");
   const handleTodo = useCallback((e) => {
     e.preventDefault();
     const task = e.target.elements.enterTodo.value;
@@ -10,6 +11,7 @@ export default function App() {
     const done = false;
     //setTodos((prev) => [...prev, { task, id }]);
     setTodos((prev) => prev.concat({ task, id, done }));
+    setVal(" ");
   }, []);
 
   const deleteTodo = useCallback((todo) => {
@@ -28,7 +30,7 @@ export default function App() {
     <div className="App">
       <h1>TODO LIST</h1>
       <form onSubmit={(e) => handleTodo(e)}>
-        <input type="text" id="enterTodo" />
+        <input type="text" id="enterTodo" value={val}/>
         <button type="submit">add</button>
       </form>
       {todos.map((todo) => (
